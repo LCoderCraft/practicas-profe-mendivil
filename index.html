@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Prácticas de Web</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .header h1 {
+            color: #0056b3;
+            margin: 0 0 10px 0;
+        }
+        .header p {
+            color: #666;
+            font-size: 16px;
+        }
+        .catalogo {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            width: 100%;
+        }
+        .tarjeta {
+            background: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .tarjeta:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        .tarjeta h3 {
+            color: #007bff;
+            margin-top: 0;
+        }
+        .tarjeta p {
+            font-size: 14px;
+            color: #555;
+            flex-grow: 1;
+            margin-bottom: 20px;
+        }
+        .btn-enlace {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .btn-enlace:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Portafolio de Prácticas Web</h1>
+        <p>Selecciona una práctica para visualizar el resultado</p>
+    </div>
+
+    <div class="catalogo">
+        <div class="tarjeta">
+            <h3>Calculadora de IMC</h3>
+            <p>Calcula el Índice de Masa Corporal utilizando condicionales y aritmética básica.</p>
+            <a href="calculadora-imc.html" class="btn-enlace">Ver Práctica</a>
+        </div>
+
+        <div class="tarjeta">
+            <h3>Fórmula General</h3>
+            <p>Resolución de ecuaciones de segundo grado capturando los valores a, b y c mediante un formulario.</p>
+            <a href="formula-general.html" class="btn-enlace">Ver Práctica</a>
+        </div>
+
+        <div class="tarjeta">
+            <h3>Salidas de Texto</h3>
+            <p>Ejemplo de los diferentes métodos en JavaScript: innerHTML, document.write, alert y console.log.</p>
+            <a href="salidas-texto.htm" class="btn-enlace">Ver Práctica</a>
+        </div>
+
+        <div class="tarjeta">
+            <h3>Impresión de Operaciones</h3>
+            <p>Declaración de 2 variables estáticas en código para imprimir la suma, resta, división y exponenciación.</p>
+            <a href="operaciones.html" class="btn-enlace">Ver Práctica</a>
+        </div>
+
+        <div class="tarjeta">
+            <h3>Calculadora Aritmetica Basica</h3>
+            <p>Uso de formularios, cajas de texto y botones para ejecutar cada operación aritmética interactivamente.</p>
+            <a href="operaciones-aritmeticas.html" class="btn-enlace">Ver Práctica</a>
+        </div>
+    </div>
+
+</body>
+</html>

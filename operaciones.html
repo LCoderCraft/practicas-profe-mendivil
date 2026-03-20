@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operaciones Aritméticas Básicas</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            background-color: #f0f4f8; 
+            color: #333; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            margin: 0; 
+        }
+        .contenedor { 
+            background: #fff; 
+            padding: 30px; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+            max-width: 400px; 
+            width: 100%; 
+        }
+        h2 { 
+            color: #0277bd; 
+            text-align: center; 
+            margin-top: 0;
+        }
+        .resultado { 
+            margin-top: 20px; 
+            padding: 15px; 
+            background-color: #e1f5fe; 
+            border-left: 5px solid #0288d1; 
+            font-size: 16px; 
+            line-height: 1.8; 
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="contenedor">
+    <h2>Operaciones Aritméticas</h2>
+    <div id="salida" class="resultado"></div>
+</div>
+
+<script>
+    // 1. Declaración de variables y asignación de valores
+    let valorA = 12;
+    let valorB = 3;
+
+    // 2. Operaciones aritméticas (JS Arithmetic)
+    let suma = valorA + valorB;
+    let resta = valorA - valorB;
+    let division = valorA / valorB;
+    let exponenciacion = valorA ** valorB; // El operador ** realiza la exponenciación (12 elevado a la 3)
+
+    // 3. Construcción del texto a mostrar
+    let textoSalida = "<strong>Valores asignados:</strong> a = " + valorA + ", b = " + valorB + "<br><br>" +
+                      "<strong>Suma (+):</strong> " + suma + "<br>" +
+                      "<strong>Resta (-):</strong> " + resta + "<br>" +
+                      "<strong>División (/):</strong> " + division + "<br>" +
+                      "<strong>Exponenciación (**):</strong> " + exponenciacion;
+
+    // 4. Salida en la página web (JS Output)
+    document.getElementById("salida").innerHTML = textoSalida;
+</script>
+
+</body>
+</html>

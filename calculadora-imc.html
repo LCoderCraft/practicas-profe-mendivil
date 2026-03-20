@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de IMC</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background-color: #f4f4f9; color: #333; display: flex; justify-content: center; align-items: center; height: 100vh; }
+        .container { max-width: 400px; width: 100%; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h2 { text-align: center; color: #0056b3; margin-top: 0; }
+        p { text-align: center; font-size: 14px; color: #666; }
+        label { display: block; margin-top: 15px; font-weight: bold; color: #444; }
+        input { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; font-size: 16px; }
+        button { width: 100%; padding: 12px; margin-top: 25px; background-color: #007bff; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; font-weight: bold; transition: background 0.3s; }
+        button:hover { background-color: #0056b3; }
+        #resultado { margin-top: 20px; padding: 15px; text-align: center; border-radius: 6px; font-weight: bold; font-size: 18px; display: none; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Calculadora de IMC (Mujer)</h2>
+    <p>Ingresa tus datos para conocer tu Índice de Masa Corporal.</p>
+    
+    <label for="peso">Peso (kg):</label>
+    <input type="number" id="peso" placeholder="Ej: 65.5" step="0.1">
+    
+    <label for="estatura">Estatura (metros):</label>
+    <input type="number" id="estatura" placeholder="Ej: 1.65" step="0.01">
+    
+    <button onclick="calcularIMC()">Calcular IMC</button>
+    
+    <div id="resultado"></div>
+</div>
+
+<script>
+    function calcularIMC() {
+        // JS Variables: Obtenemos los valores ingresados
+        let peso = parseFloat(document.getElementById("peso").value);
+        let estatura = parseFloat(document.getElementById("estatura").value);
+        
+        // Validación básica
+        if (isNaN(peso) || isNaN(estatura) || peso <= 0 || estatura <= 0) {
+            alert("Por favor, ingresa valores numéricos válidos para peso y estatura.");
+            return;
+        }
+
+        // JS Arithmetic: Fórmula del IMC (peso / estatura al cuadrado)
+        let imc = peso / (estatura * estatura);
+        
+        let grado = "";
+        let colorFondo = "";
+        let colorTexto = "#fff";
+
+        // JS Conditionals: Evaluamos el grado según los estándares
+        if (imc < 18.5) {
+            grado = "Bajo peso";
+            colorFondo = "#ffb74d"; 
+            colorTexto = "#000";
+        } else if (imc >= 18.5 && imc <= 24.9) {
+            grado = "Peso normal (Saludable)";
+            colorFondo = "#81c784"; 
+            colorTexto = "#000";
+        } else if (imc >= 25 && imc <= 29.9) {
+            grado = "Sobrepeso";
+            colorFondo = "#ffb74d"; 
+            colorTexto = "#000";
+        } else if (imc >= 30 && imc <= 34.9) {
+            grado = "Obesidad Grado I";
+            colorFondo = "#e57373"; 
+        } else if (imc >= 35 && imc <= 39.9) {
+            grado = "Obesidad Grado II";
+            colorFondo = "#f44336"; 
+        } else {
+            grado = "Obesidad Grado III";
+            colorFondo = "#b71c1c"; 
+        }
+
+        let divResultado = document.getElementById("resultado");
+        divResultado.style.display = "block";
+        divResultado.style.backgroundColor = colorFondo;
+        divResultado.style.color = colorTexto;
+        
+        divResultado.innerHTML = "Tu IMC es: " + imc.toFixed(2) + "<br><br>Grado: " + grado;
+    }
+</script>
+
+</body>
+</html>
