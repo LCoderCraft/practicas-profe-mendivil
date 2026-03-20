@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Fórmula General</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            background-color: #f4f4f9; 
+            color: #333;
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            margin: 0; 
+        }
+        .contenedor { 
+            background: white; 
+            padding: 30px; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+            max-width: 350px; 
+            width: 100%; 
+        }
+        h2 { text-align: center; color: #0056b3; margin-top: 0; }
+        p { text-align: center; font-size: 14px; color: #666; }
+        label { display: block; margin-top: 15px; font-weight: bold; }
+        input { 
+            width: 100%; 
+            padding: 10px; 
+            margin-top: 5px; 
+            border: 1px solid #ccc; 
+            border-radius: 5px; 
+            box-sizing: border-box; 
+        }
+        button { 
+            width: 100%; 
+            padding: 12px; 
+            margin-top: 20px; 
+            background-color: #007bff; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            font-size: 16px; 
+            font-weight: bold; 
+        }
+        button:hover { background-color: #0056b3; }
+        #mensaje-resultado { 
+            margin-top: 20px; 
+            padding: 15px; 
+            background-color: #e9ecef; 
+            border-radius: 5px; 
+            text-align: center; 
+            font-weight: bold; 
+            font-size: 18px; 
+            display: none; 
+        }
+    </style>
+</head>
+<body>
+
+<div class="contenedor">
+    <h2>Fórmula General</h2>
+    <p>Calcula x1 y x2 para: ax² + bx + c = 0</p>
+    
+    <label for="valA">Valor de a:</label>
+    <input type="number" id="valA" placeholder="Ej: 1">
+    
+    <label for="valB">Valor de b:</label>
+    <input type="number" id="valB" placeholder="Ej: -5">
+    
+    <label for="valC">Valor de c:</label>
+    <input type="number" id="valC" placeholder="Ej: 6">
+    
+    <button onclick="calcularRaices()">Calcular x1 y x2</button>
+    
+    <div id="mensaje-resultado"></div>
+</div>
+
+<script>
+    function calcularRaices() {
+        // Obtenemos los valores de los inputs y los convertimos a números flotantes
+        let a = parseFloat(document.getElementById("valA").value);
+        let b = parseFloat(document.getElementById("valB").value);
+        let c = parseFloat(document.getElementById("valC").value);
+        
+        let contenedorResultado = document.getElementById("mensaje-resultado");
+
+        // Validación de campos vacíos
+        if (isNaN(a) || isNaN(b) || isNaN(c)) {
+            alert("Por favor, captura los tres valores (a, b y c).");
+            return;
+        }
+
+        // Validación matemática: 'a' no puede ser 0 en una ecuación cuadrática
+        if (a === 0) {
+            alert("El valor de 'a' no puede ser cero. Esto no sería una ecuación de segundo grado.");
+            return;
+        }
+
+        // JS Arithmetic: Cálculo del discriminante (b² - 4ac)
+        let discriminante = (b * b) - (4 * a * c);
+        let mensaje = "";
+
+        // JS Conditionals: Evaluamos el tipo de raíces según el discriminante
+        if (discriminante > 0) {
+            // Dos raíces reales y diferentes
+            let x1 = (-b + Math.sqrt(discriminante)) / (2 * a);
+            let x2 = (-b - Math.sqrt(discriminante)) / (2 * a);
+            mensaje = "Resultados:<br>x1 = " + x1.toFixed(4) + "<br>x2 = " + x2.toFixed(4);
+        } else if (discriminante === 0) {
+            // Una raíz real doble
+            let x = -b / (2 * a);
+            mensaje = "Raíz única (doble):<br>x1 = x2 = " + x.toFixed(4);
+        } else {
+            // Raíces complejas
+            mensaje = "La ecuación no tiene solución en los números reales (raíces complejas).";
+        }
+
+        // JS Output: Hacemos visible el contenedor e imprimimos el mensaje
+        contenedorResultado.style.display = "block";
+        contenedorResultado.innerHTML = mensaje;
+    }
+</script>
+
+</body>
+</html>

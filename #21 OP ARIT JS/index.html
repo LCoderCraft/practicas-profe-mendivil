@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Interactiva</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            background-color: #f4f4f9; 
+            color: #333; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            margin: 0; 
+        }
+        .contenedor { 
+            background: #fff; 
+            padding: 30px; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+            max-width: 350px; 
+            width: 100%; 
+            text-align: center;
+        }
+        h2 { color: #0056b3; margin-top: 0; }
+        label { display: block; margin-top: 15px; font-weight: bold; text-align: left; }
+        input { 
+            width: 100%; 
+            padding: 10px; 
+            margin-top: 5px; 
+            border: 1px solid #ccc; 
+            border-radius: 5px; 
+            box-sizing: border-box; 
+            font-size: 16px;
+        }
+        .botones-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        button { 
+            padding: 12px; 
+            background-color: #007bff; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            font-size: 15px; 
+            font-weight: bold; 
+        }
+        button:hover { background-color: #0056b3; }
+        #resultado { 
+            margin-top: 20px; 
+            padding: 15px; 
+            background-color: #e9ecef; 
+            border-radius: 5px; 
+            font-weight: bold; 
+            font-size: 18px; 
+            display: none; 
+        }
+    </style>
+</head>
+<body>
+
+<div class="contenedor">
+    <h2>Operaciones Básicas</h2>
+    <p>Ingresa dos valores y elige una operación:</p>
+
+    <label for="valA">Valor A:</label>
+    <input type="number" id="valA" placeholder="Ej: 15">
+    
+    <label for="valB">Valor B:</label>
+    <input type="number" id="valB" placeholder="Ej: 3">
+    
+    <div class="botones-grid">
+        <button onclick="sumar()">Sumar (+)</button>
+        <button onclick="restar()">Restar (-)</button>
+        <button onclick="dividir()">Dividir (/)</button>
+        <button onclick="exponenciar()">Exponente (**)</button>
+    </div>
+    
+    <div id="resultado"></div>
+</div>
+
+<script>
+    // Función auxiliar para obtener y validar los valores del formulario
+    function obtenerValores() {
+        let a = parseFloat(document.getElementById("valA").value);
+        let b = parseFloat(document.getElementById("valB").value);
+        return { a, b };
+    }
+
+    // Función auxiliar para imprimir la salida en el HTML
+    function mostrarResultado(mensaje) {
+        let divResultado = document.getElementById("resultado");
+        divResultado.style.display = "block";
+        divResultado.innerHTML = mensaje;
+    }
+
+    // JS Arithmetic: Funciones para cada botón
+    function sumar() {
+        let valores = obtenerValores();
+        if (isNaN(valores.a) || isNaN(valores.b)) {
+            mostrarResultado("Por favor, ingresa ambos valores.");
+            return;
+        }
+        let res = valores.a + valores.b;
+        mostrarResultado(valores.a + " + " + valores.b + " = " + res);
+    }
+
+    function restar() {
+        let valores = obtenerValores();
+        if (isNaN(valores.a) || isNaN(valores.b)) {
+            mostrarResultado("Por favor, ingresa ambos valores.");
+            return;
+        }
+        let res = valores.a - valores.b;
+        mostrarResultado(valores.a + " - " + valores.b + " = " + res);
+    }
+
+    function dividir() {
+        let valores = obtenerValores();
+        if (isNaN(valores.a) || isNaN(valores.b)) {
+            mostrarResultado("Por favor, ingresa ambos valores.");
+            return;
+        }
+        if (valores.b === 0) {
+            mostrarResultado("Error: No se puede dividir entre cero.");
+            return;
+        }
+        let res = valores.a / valores.b;
+        mostrarResultado(valores.a + " / " + valores.b + " = " + res.toFixed(4));
+    }
+
+    function exponenciar() {
+        let valores = obtenerValores();
+        if (isNaN(valores.a) || isNaN(valores.b)) {
+            mostrarResultado("Por favor, ingresa ambos valores.");
+            return;
+        }
+        let res = valores.a ** valores.b;
+        mostrarResultado(valores.a + " elevado a la " + valores.b + " = " + res);
+    }
+</script>
+
+</body>
+</html>

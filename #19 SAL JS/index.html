@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salidas de texto en JavaScript</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f9f9f9; padding: 20px; color: #333; }
+        .contenedor { max-width: 600px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        h2 { color: #0056b3; }
+        button { display: block; width: 100%; margin: 10px 0; padding: 12px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
+        button:hover { background-color: #0056b3; }
+        #salida-inner { margin-top: 15px; padding: 15px; background-color: #e9ecef; border-radius: 5px; display: none; }
+        .nota { font-size: 13px; color: #666; font-style: italic; }
+    </style>
+</head>
+<body>
+
+<div class="contenedor">
+    <h2>Formas de Salida en JavaScript</h2>
+    <p>Haz clic en los botones para ver mis "datos personales" usando distintos métodos de salida:</p>
+
+    <button onclick="salidaInnerHTML()">1. Mostrar con innerHTML</button>
+    <div id="salida-inner"></div>
+
+    <button onclick="salidaDocumentWrite()">2. Mostrar con document.write()</button>
+
+    <button onclick="salidaAlert()">3. Mostrar con window.alert()</button>
+
+    <button onclick="salidaConsoleLog()">4. Mostrar con console.log()</button>
+    <p class="nota">Nota para la opción 4: Presiona F12 para abrir las herramientas de desarrollador y ve a la pestaña "Consola" ("Console") para ver el resultado.</p>
+</div>
+
+<script>
+    // Variables con mis datos personales
+    let miNombre = "Alfaro Lopez Luis Humberto";
+    let miEdad = "20 años";
+    let miUniversidad = "Universidad autónoma de Sinaloa";
+
+    // 1. Uso de innerHTML (Modifica el contenido de un elemento existente)
+    function salidaInnerHTML() {
+        let divSalida = document.getElementById("salida-inner");
+        divSalida.style.display = "block";
+        divSalida.innerHTML = "<strong>Nombre:</strong> " + miNombre + "<br>" +
+                              "<strong>Edad:</strong> " + miEdad + "<br>" +
+                              "<strong>Universidad:</strong> " + miUniversidad;
+    }
+
+    // 2. Uso de document.write() (Sobrescribe todo el HTML actual si la página ya cargó)
+    function salidaDocumentWrite() {
+        document.write("<h2>Página sobrescrita por document.write()</h2>");
+        document.write("<p>Hola, mi nombre es " + miNombre + ".</p>");
+        document.write("<p>Tengo " + miEdad + " y estudio en " + miUniversidad + ".</p>");
+        document.write("<p><em>Por favor, recarga la página para volver al menú anterior.</em></p>");
+    }
+
+    // 3. Uso de window.alert() (Lanza una ventana emergente)
+    function salidaAlert() {
+        window.alert("Datos Personales:\n\nNombre: " + miNombre + "\nEdad: " + miEdad + "\nUniversidad: " + miUniversidad);
+    }
+
+    // 4. Uso de console.log() (Escribe en la consola de depuración del navegador)
+    function salidaConsoleLog() {
+        console.log("=== DATOS PERSONALES ===");
+        console.log("Nombre:", miNombre);
+        console.log("Edad:", miEdad);
+        console.log("Universidad:", miUniversidad);
+        console.log("========================");
+        alert("Los datos se han enviado a la consola. (Presiona F12 para verla).");
+    }
+</script>
+
+</body>
+</html>
