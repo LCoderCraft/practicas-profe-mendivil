@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tablas de Multiplicar Dinámicas</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f9f9f9; padding: 20px; color: #333; }
+        .contenedor { max-width: 600px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        h2 { color: #0056b3; }
+        input[type="number"] { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+        button { display: block; width: 100%; margin: 10px 0; padding: 12px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
+        button:hover { background-color: #0056b3; }
+        #salida-inner { margin-top: 15px; padding: 15px; background-color: #e9ecef; border-radius: 5px; display: none; height: 300px; overflow-y: auto; }
+        .tabla-seccion { margin-bottom: 20px; background: white; padding: 10px; border-radius: 5px; border-left: 4px solid #28a745; }
+        .tabla-seccion h3 { margin-top: 0; color: #333; }
+        .error { color: #dc3545; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="contenedor">
+    <h2>Generador de Tablas Dinámicas</h2>
+    <p>Ingresa un número entero y positivo para generar las tablas desde el 1 hasta el número indicado:</p>
+
+    <input type="number" id="numeroUsuario" placeholder="Ejemplo: 5" min="1">
+    <button onclick="generarTablasDinamicas()">Generar tablas de multiplicar</button>
+    <div id="salida-inner"></div>
+</div>
+
+<script>
+    function generarTablasDinamicas() {
+        let inputValor = document.getElementById("numeroUsuario").value;
+        let limite = parseInt(inputValor);
+        let divSalida = document.getElementById("salida-inner");
+        
+        // Validación de datos
+        if (isNaN(limite) || limite <= 0) {
+            divSalida.innerHTML = "<p class='error'>Por favor, ingresa un número entero positivo mayor a 0.</p>";
+            divSalida.style.display = "block";
+            return;
+        }
+
+        let contenidoHTML = "";
+
+        // Ciclo externo hasta el límite definido por el usuario
+        for (let i = 1; i <= limite; i++) {
+            contenidoHTML += `<div class="tabla-seccion"><h3>Tabla del ${i}</h3>`;
+            
+            for (let j = 1; j <= 10; j++) {
+                contenidoHTML += `${i} x ${j} = ${i * j} <br>`;
+            }
+            
+            contenidoHTML += `</div>`;
+        }
+
+        divSalida.innerHTML = contenidoHTML;
+        divSalida.style.display = "block";
+    }
+</script>
+
+</body>
+</html>

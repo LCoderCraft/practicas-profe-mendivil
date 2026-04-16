@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tablas de Multiplicar del 1 al 10</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f9f9f9; padding: 20px; color: #333; }
+        .contenedor { max-width: 600px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        h2 { color: #0056b3; }
+        button { display: block; width: 100%; margin: 10px 0; padding: 12px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
+        button:hover { background-color: #0056b3; }
+        #salida-inner { margin-top: 15px; padding: 15px; background-color: #e9ecef; border-radius: 5px; display: none; height: 300px; overflow-y: auto; }
+        .tabla-seccion { margin-bottom: 20px; background: white; padding: 10px; border-radius: 5px; border-left: 4px solid #0056b3; }
+        .tabla-seccion h3 { margin-top: 0; color: #333; }
+    </style>
+</head>
+<body>
+
+<div class="contenedor">
+    <h2>Generador de Tablas (1 al 10)</h2>
+    <p>Haz clic en el botón para generar las tablas de multiplicar usando ciclos <strong>for</strong>.</p>
+
+    <button onclick="generarTablasFijas()">Generar tablas de multiplicar</button>
+    <div id="salida-inner"></div>
+</div>
+
+<script>
+    function generarTablasFijas() {
+        let contenidoHTML = "";
+
+        // Ciclo externo para las tablas (del 1 al 10)
+        for (let i = 1; i <= 10; i++) {
+            contenidoHTML += `<div class="tabla-seccion"><h3>Tabla del ${i}</h3>`;
+            
+            // Ciclo interno para los multiplicadores (del 1 al 10)
+            for (let j = 1; j <= 10; j++) {
+                contenidoHTML += `${i} x ${j} = ${i * j} <br>`;
+            }
+            
+            contenidoHTML += `</div>`;
+        }
+
+        let divSalida = document.getElementById("salida-inner");
+        divSalida.innerHTML = contenidoHTML;
+        divSalida.style.display = "block";
+    }
+</script>
+
+</body>
+</html>
